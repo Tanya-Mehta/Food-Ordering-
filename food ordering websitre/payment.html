@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Data Storage</title>
+</head>
+<style>
+    body {
+
+        border-radius: 25%;
+        background-image: url("");
+        background-size: cover;
+        /* background-image: url("https://d2jtqfgkm0oeyk.cloudfront.net/uploads/payment-gateway-1623656572.jpg");
+      background-size: cover;
+  position: fixed; */
+    }
+
+    input {
+        height: 30px;
+        width: 50%;
+        border-radius: 4px;
+        font-size: 30px;
+    }
+
+    h1 {
+        font-size: 50px;
+        text-align: center;
+        border-radius: 4px;
+        border-width: 10px;
+
+
+        background-color: cornsilk;
+
+    }
+
+    form {
+        width: 800px;
+        height: 600px;
+
+        font-family: cursive;
+        font-size: 30px;
+        font-weight: bold;
+
+
+        border: 2px solid black;
+        background-image: url("https://d2jtqfgkm0oeyk.cloudfront.net/uploads/payment-gateway-1623656572.jpg");
+        background-size: cover;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+
+
+
+    }
+
+
+    #submit {
+        font-size: 30px;
+        width: 150px;
+        height: 50px;
+    }
+</style>
+
+<body>
+    <h1>PAYMENT DETAILS</h1>
+    <form id="dataForm">
+        <br>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address"><br><br>
+        <label for="phoneno">Phone No.:</label>
+        <input type="number" id="phoneno" name="phoneno"><br><br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <input id="submit"type="submit" value="Submit" onclick="save()">
+    </form>
+    <br>
+    <br>
+    <br>
+
+    <ul id="savedData"></ul>
+    <script>
+
+        function storeFormData() {
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                address: document.getElementById('address').value,
+                Phoneno: document.getElementById('phoneno').value,
+
+            };
+            localStorage.setItem('formData', JSON.stringify(formData));
+        }
+        storeFormData();
+
+
+        // function displayFormData() {
+        //     const storedData = localStorage.getItem('formData');
+        //     if (storedData) {
+        //         const formData = JSON.parse(storedData);
+        //         const savedDataList = document.getElementById('savedData');
+        //         savedDataList.innerHTML = `<li>Name: ${formData.name}</li>
+        //                                     <li>Email: ${formData.email}</li>
+        //                                     <li>Address: ${formData.address}</li>`
+
+        //     }
+        // }
+
+        document.getElementById('dataForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+        
+            storeFormData();
+            dataForm.value("");
+            // displayFormData();
+             
+        });
+function save(){
+    alert("order has been placed")
+}
+
+        // displayFormData();
+    </script>
+</body>
+
+</html>
